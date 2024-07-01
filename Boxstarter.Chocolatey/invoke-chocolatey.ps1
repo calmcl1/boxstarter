@@ -34,6 +34,8 @@ function Expand-ZipFile($ZipFilePath, $DestinationFolder) {
 
 function Invoke-Chocolatey($chocoArgs) {
     Write-BoxstarterMessage "Current runtime is $($PSVersionTable.CLRVersion)" -Verbose
+    # be sure not to include empty arguments when calling Start-Process
+    $chocoArgs = $chocoArgs.Where({ $_ -ne "" })
 
     if (-Not $env:ChocolateyInstall) {
         [System.Environment]::SetEnvironmentVariable('ChocolateyInstall', "$env:programdata\chocolatey", 'Machine')
@@ -68,7 +70,7 @@ function Invoke-Chocolatey($chocoArgs) {
             Write-BoxstarterMessage "BoxstarterWrapper::Run($chocoArgs)..." -Verbose
             <#
             $chocoArgs | ForEach-Object {
-              Write-BoxStarterMessage " -> $_" -Verbose
+              Write-BoxstarterMessage " -> $_" -Verbose
             }
             #>
 
@@ -80,12 +82,14 @@ function Invoke-Chocolatey($chocoArgs) {
                 UseNewEnvironment = $false
                 Wait              = $false
                 WorkingDirectory  = $targetWdir
-                Verbose           = $VerbosePreference
+                Verbose           = ($global:VerbosePreference -eq "Continue")
             }
             
             $p = Start-Process @pargs
 
+            $dummy = $p.Handle # Cache the handle => https://github.com/PowerShell/PowerShell/issues/20400
             Wait-Process -Id $p.Id
+            Write-Verbose "choco process handle: $dummy"
             
             Write-BoxstarterMessage "BoxstarterWrapper::Run => $($p.ExitCode)" -Verbose
             [System.Environment]::ExitCode = $p.ExitCode

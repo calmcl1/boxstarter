@@ -15,7 +15,7 @@ catch {
 
 function Get-Boxstarter {
     Param(
-        [string] $Version = "2.13.0",
+        [string] $Version = "3.1.0",
         [switch] $Force
     )
     if(!(Test-Admin)) {
@@ -45,11 +45,11 @@ function Get-Boxstarter {
         $chocoVersion  = "2.9.17"
         try {
             New-Object -TypeName Version -ArgumentList $chocoVersion.split('-')[0] | Out-Null
-            $command = "cinst Boxstarter -y"
+            $command = "choco install Boxstarter -y"
         }
         catch{
             # if there is no -v then its an older version with no -y
-            $command = "cinst Boxstarter"
+            $command = "choco install Boxstarter"
         }
         $command += " --version $version"
         Invoke-Expression $command
@@ -82,8 +82,7 @@ function Check-Chocolatey {
             }
             try {
                 $env:ChocolateyInstall = "$env:programdata\chocolatey"
-                New-Item $env:ChocolateyInstall -Force -type directory | Out-Null
-                $url="https://chocolatey.org/api/v2/package/chocolatey/"
+                $url="https://community.chocolatey.org/api/v2/package/chocolatey/"
                 $wc=new-object net.webclient
                 $wp=[system.net.WebProxy]::GetDefaultProxy()
                 $wp.UseDefaultCredentials=$true

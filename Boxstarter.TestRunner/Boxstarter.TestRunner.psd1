@@ -4,7 +4,7 @@ Description = 'The Boxstarter Test Runner module makes it easy to automate the t
 ModuleToProcess = './Boxstarter.TestRunner.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.13.0'
+ModuleVersion = '3.1.0'
 
 # ID used to uniquely identify this module
 GUID = '087b5fe9-4a6e-40b5-a0fb-e670b86563b3'
@@ -28,7 +28,21 @@ NestedModules = @('..\Boxstarter.Common\Boxstarter.Common.psd1','..\Boxstarter.C
 FunctionsToExport = '*'
 
 # Cmdlets to export from this module
-CmdletsToExport = '*'
+CmdletsToExport = @(
+  'Get-BoxstarterDeployOptions', 
+  'Set-BoxstarterDeployOptions', 
+  'Test-BoxstarterPackage', 
+  'Install-BoxstarterScripts', 
+  'Get-BoxstarterPackage',
+  'Get-BoxstarterPackageNugetFeed', 
+  'Set-BoxstarterPackageNugetFeed', 
+  'Remove-BoxstarterPackageNugetFeed', 
+  'Publish-BoxstarterPackages', 
+  'Set-BoxstarterFeedAPIKey', 
+  'Publish-BoxstarterPackage', 
+  'Select-BoxstarterResultsToPublish', 
+  'Get-BoxstarterFeedAPIKey'
+)
 
 # Variables to export from this module
 VariablesToExport = '*'

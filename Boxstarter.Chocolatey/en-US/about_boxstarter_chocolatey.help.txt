@@ -60,7 +60,7 @@ Consuming Boxstarter Packages
 
 Package Sources
 	Install-BoxstarterPackage (or Boxstarter) expects just the name of the
-	bootstrapping package - just like CINST or NuGet. Boxstarter will search
+	bootstrapping package - just like choco install or NuGet. Boxstarter will search
 	the following locations in this order:
 
 	- $Boxstarter.LocalRepo: This is the local repository that by default is
@@ -68,7 +68,7 @@ Package Sources
 	directory ($Boxstarter.BaseDir). You can change the default by using the
 	Set-BoxstarterConfig function with the -LocalRepo argument.
 
-	- Chocolatey.org: The public Chocolatey community feed at https://chocolatey.org/api/v2
+	- Chocolatey.org: The public Chocolatey community feed at https://community.chocolatey.org/api/v2
 
 	The last remote source can be configured by editing
 	$($Boxstarter.BaseDir)\Boxstarter.Config.
@@ -120,7 +120,7 @@ Package Authoring Considerations
 	twice.
 
 	- If you have several Chocolatey packages that you want to install
-	during the Boxstarter session, it is preferable to call CINST
+	during the Boxstarter session, it is preferable to call choco install
 	directly from inside your ChocolateyInstall instead of declaring
 	them as dependencies. This is because Boxstarter cannot intercept
 	Chocolatey dependencies so those packages will not have any reboot

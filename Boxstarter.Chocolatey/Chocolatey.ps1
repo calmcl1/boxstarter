@@ -58,7 +58,7 @@ function Write-HostOverride {
     )
 
     if ($null -ne $Boxstarter.ScriptToCall) { 
-        Log-BoxStarterMessage $object 
+        Log-BoxstarterMessage $object 
     }
 
     if ($Boxstarter.SuppressLogging) {
@@ -622,7 +622,7 @@ function Export-BoxstarterVars {
 
 function Export-ToEnvironment($varToExport, $scope) {
     $val = Invoke-Expression "`$$($scope):$varToExport"
-    if ($val -is [string] -or $val -is [boolean]) {
+    if ($val -is [string] -or $val -is [boolean] -or $val -is [system.management.automation.actionpreference]) {
         Set-Item -Path "Env:\BEX.$varToExport" -Value $val.ToString() -Force
     }
     elseif ($null -eq $val) {

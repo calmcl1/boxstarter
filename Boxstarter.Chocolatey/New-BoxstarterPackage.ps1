@@ -72,7 +72,10 @@ Get-PackageRoot
     <version>1.0.0</version>
     <authors></authors>
     <owners></owners>
-    <description>Package description</description>
+    <projectUrl>https://boxstarter.org</projectUrl>
+    <description>
+Package description, should be longer than 19 characters to pass CCR package validator
+    </description>
     <tags>Tag1 Tag2</tags>
   </metadata>
 </package>

@@ -16,14 +16,18 @@ object Boxstarter : BuildType({
     name = "Build"
 
     artifactRules = """
-        buildArtifacts => buildArtifacts
+        +:buildArtifacts/Boxstarter.*.nupkg
+        +:buildArtifacts/Boxstarter.*.zip
+        +:Web/Launch/**/* => webLaunch.zip
+        -:Web/Launch/.gitattributes => webLaunch.zip
+        +:BuildScripts/bootstrapper.ps1
     """.trimIndent()
 
     params {
         param("env.vcsroot.branch", "%vcsroot.branch%")
         param("env.Git_Branch", "%teamcity.build.vcs.branch.Boxstarter_BoxstarterVcsRoot%")
         param("teamcity.git.fetchAllHeads", "true")
-        param("env.CERT_SUBJECT_NAME", "Chocolatey Software, Inc.")
+        param("env.CERT_SUBJECT_NAME", "Chocolatey Software, Inc")
     }
 
     vcs {

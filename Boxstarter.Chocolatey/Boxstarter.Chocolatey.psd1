@@ -1,10 +1,10 @@
 @{
 Description = 'Provides a robust environment capable of automatic reboots and several windows customization functions ideal for installing Chocolatey packages on a new machine'
 # Script module or binary module file associated with this manifest.
-ModuleToProcess = './boxstarter.chocolatey.psm1'
+ModuleToProcess = './Boxstarter.Chocolatey.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.13.0'
+ModuleVersion = '3.1.0'
 
 # ID used to uniquely identify this module
 GUID = 'bbdb3e8b-9daf-4c00-a553-4f3f88fb6e51'
@@ -25,8 +25,26 @@ DotNetFrameworkVersion = '2.0'
 NestedModules = @('..\Boxstarter.Common\Boxstarter.Common.psd1')
 
 # Functions to export from this module
-FunctionsToExport = '*'
-
+FunctionsToExport = @(
+  'Get-BoxstarterConfig',
+  'Get-PackageRoot', 
+  'Enable-BoxstarterClientRemoting', 
+  'Enable-BoxstarterCredSSP', 
+  'Export-BoxstarterVars', 
+  'Install-ChocolateyInstallPackageOverride', 
+  'Invoke-BoxstarterBuild', 
+  'Invoke-BoxstarterFromTask', 
+  'Invoke-Chocolatey', 
+  'Invoke-ChocolateyBoxstarter', 
+  'Install-BoxstarterPackage', 
+  'New-BoxstarterPackage', 
+  'New-PackageFromScript', 
+  'Register-ChocolateyInterception', 
+  'Resolve-VMPlugin', 
+  'Set-BoxstarterConfig', 
+  'Set-BoxstarterShare', 
+  'Write-HostOverride'
+)
 # Cmdlets to export from this module
 CmdletsToExport = '*'
 
@@ -34,7 +52,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = '*'
+AliasesToExport = @('Enable-BoxstarterVM', 'Install-ChocolateyInstallPackage', 'Write-Host')
 
 # List of all modules packaged with this module.
 # ModuleList = @()

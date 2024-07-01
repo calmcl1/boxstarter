@@ -12,7 +12,7 @@ Describe "New-BoxstarterPackage" {
     $Boxstarter.LocalRepo=Join-Path $boxstarter.BaseDir "repo"
     $Boxstarter.SuppressLogging=$true
     $packageName="pkg"
-    $Description="My Description"
+    $Description="My Description that is long enough to pass the package validator"
     Context "When No Path is provided" {
         New-BoxstarterPackage $packageName $Description | Out-Null
 

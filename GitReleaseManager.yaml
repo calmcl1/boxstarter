@@ -1,12 +1,47 @@
 issue-labels-include:
-- breaking change
-- feature
-- bug
-- enhancement
-- Documentation
+  - Breaking Change
+  - Deprecate
+  - Feature
+  - C4B Feature
+  - Bug
+  - Improvement
+  - Documentation
+  - Dependency Change
 issue-labels-exclude:
-- Build
+  - Internal Refactoring
+  - BuildAutomation
+  - NO RELEASE NOTES
 issue-labels-alias:
-    - name:    Documentation
-      header:  Documentation
-      plural:  Documentation
+  - name:    Documentation
+    header:  Documentation
+    plural:  Documentation
+  - name:    Bug
+    header:  Bug Fix
+    plural:  Bug Fixes
+  - name:    Deprecate
+    header:  Deprecated Feature
+    plural:  Deprecated Features
+create:
+  include-sha-section: true
+  sha-section-heading: "SHA256 Hashes of the release artifacts"
+  sha-section-line-format: "- `{1}\t{0}`"
+close:
+  use-issue-comments: true
+  issue-comment: |-
+    :tada: This issue has been resolved in version {milestone} :tada:
+
+    The release is available on:
+
+    - [GitHub Release](https://github.com/{owner}/{repository}/releases/tag/{milestone})
+    - Chocolatey Packages
+      - [Boxstarter](https://community.chocolatey.org/packages/boxstarter/{milestone})
+      - [Boxstarter.Azure](https://community.chocolatey.org/packages/boxstarter.azure/{milestone})
+      - [Boxstarter.Bootstrapper](https://community.chocolatey.org/packages/boxstarter.bootstrapper/{milestone})
+      - [Boxstarter.Chocolatey](https://community.chocolatey.org/packages/boxstarter.chocolatey/{milestone})
+      - [Boxstarter.Common](https://community.chocolatey.org/packages/boxstarter.common/{milestone})
+      - [Boxstarter.HyperV](https://community.chocolatey.org/packages/boxstarter.hyperv/{milestone})
+      - [Boxstarter.TestRunner](https://community.chocolatey.org/packages/boxstarter.testrunner/{milestone})
+      - [Boxstarter.WinConfig](https://community.chocolatey.org/packages/boxstarter.winconfig/{milestone})
+    - [Boxstarter Website](https://boxstarter.org/)
+
+    Your **[GitReleaseManager](https://github.com/GitTools/GitReleaseManager)** bot :package: :rocket:
